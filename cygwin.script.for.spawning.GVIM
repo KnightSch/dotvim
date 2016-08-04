@@ -6,7 +6,7 @@ use strict;
 #
 # alias vi=/usr/local/bin/vi
 
-my $gvim = "\"/cygdrive/c/Program Files (x86)/Vim/vim73/gvim.exe\"";
+my $gvim = "\"/cygdrive/c/Program Files (x86)/vim/vim74/gvim.exe\"";
 if ($#ARGV == -1) {
     system $gvim." &";
     exit 0;
