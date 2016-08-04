@@ -946,7 +946,6 @@ let $PATH .= ':' . $HOME . '/.vim/bundle/typescript-tools/bin'
 set rtp+=$HOME/.vim/bundle/typescript-tools/
 
 au BufNewFile,BufRead *.ts call SetupTSEnviron()
-au BufNewFile,BufRead *.tsx call SetupTSEnviron()
 function! SetupTSEnviron()
     setlocal filetype=typescript
     se makeprg=make
@@ -975,61 +974,3 @@ function! SetupRSTEnviron()
     setlocal filetype=rst
     nnoremap <buffer> <F7> :make html<CR>
 endfunction
-
-"
-" .clj files (Clojure)
-"
-" The Clojure workflow goes like this:
-" You 
-"    lein repl
-" and then you edit in VIM, where you
-"    :Connect
-" and attach to the port of your nrepl (shown during startup of 'lein repl')
-" After that, I have mapped F7 to :Eval the function you are in... i.e. send
-" it to the running repl, where you can call, inspect results, etc.
-" F6 sends the whole file.
-"
-au BufNewFile,BufRead *.clj call SetupCLJEnviron()
-function! SetupCLJEnviron()
-se nohlsearch
-noremap <buffer> <silent> K :exe "Doc" expand('<cword>') <CR>
-vmap <buffer> <silent> <F7> :Eval<CR>
-nmap <F7> ?^(<CR>V%:Eval<CR>%
-nnoremap <buffer> <silent> <F6> ggVG:Eval<CR>
-endfunction
-
-"
-" .rs files (Rust)
-"
-au BufNewFile,BufRead *.rs call SetupRSEnviron()
-function! SetupRSEnviron()
-    "
-    " Remap F7 to make
-    "
-    noremap <buffer> <special> <F7> :make<CR>
-    noremap! <buffer> <special> <F7> <ESC>:make<CR>
-endfunction
-
-"
-" .java files (Java)
-"
-au BufNewFile,BufRead *.java call SetupJavaEnviron()
-function! SetupJavaEnviron()
-    setlocal omnifunc=javacomplete#Complete
-    nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-    nmap <F5> <Plug>(JavaComplete-Imports-Add)
-    imap <F5> <Plug>(JavaComplete-Imports-Add)
-    nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-    imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-    nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-    imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-    noremap <buffer> <special> <F7> :make<CR>
-    noremap! <buffer> <special> <F7> <ESC>:make<CR>
-endfunction
-
-"
-" Now read machine-local customizations
-"
-if filereadable(glob("~/.vimrc.local")) 
-    source ~/.vimrc.local
-endif
