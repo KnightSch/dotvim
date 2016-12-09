@@ -206,6 +206,17 @@ nnoremap  <silent> + :call WinMove('>')<CR>
 nnoremap  <silent> _ :call WinMove('<')<CR>
 
 "
+" DoxygenToolKit configure
+"
+let g:DoxygenToolkit_briefTag_pre="@Brief  "
+let g:DoxygenToolkit_paramTag_pre="@Param "
+let g:DoxygenToolkit_returnTag="@Returns   "
+let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+let g:DoxygenToolkit_blockFooter="--------------------------------------------------------------------------"
+let g:DoxygenToolkit_authorName="Joe Shen"
+"let g:DoxygenToolkit_licenseTag="My own license"   <-- !!! Does not end with "\<enter>"
+
+"
 "when the vim window is resized resize the vsplit panes as well
 "
 au VimResized * exe "normal! \<c-w>="
@@ -458,7 +469,7 @@ if has("gui_running")
     " Horizontal scrollbar
     set guioptions+=b
     set nowrap
-    set guifont=Lucida\ Console\ Semi-Condensed\ 11
+    set guifont=Source\ Code\ Pro\ 11
     colorscheme evening
 endif
 
@@ -481,57 +492,57 @@ command! Cdd cd %:p:h
 "
 " Greek-locale normal maps
 "
-"noremap α a
-"noremap β b
-"noremap ψ c
-"noremap δ d
-"noremap ε e
-"noremap φ f
-"noremap γ g
-"noremap η h
-"noremap ι i
-"noremap ξ j
-"noremap κ k
-"noremap λ l
-"noremap μ m
-"noremap ν n
-"noremap ο o
-"noremap π p
-"noremap ρ r
-"noremap σ s
-"noremap τ t
-"noremap θ u
-"noremap ω v
-"noremap ς w
-"noremap χ x
-"noremap υ y
-"noremap ζ z
+noremap α a
+noremap β b
+noremap ψ c
+noremap δ d
+noremap ε e
+noremap φ f
+noremap γ g
+noremap η h
+noremap ι i
+noremap ξ j
+noremap κ k
+noremap λ l
+noremap μ m
+noremap ν n
+noremap ο o
+noremap π p
+noremap ρ r
+noremap σ s
+noremap τ t
+noremap θ u
+noremap ω v
+noremap ς w
+noremap χ x
+noremap υ y
+noremap ζ z
 
-"noremap Α A
-"noremap Β B
-"noremap Ψ C
-"noremap Δ D
-"noremap Ε E
-"noremap Φ F
-"noremap Γ G
-"noremap Η H
-"noremap Ι I
-"noremap Ξ J
-"noremap Κ K
-"noremap Λ L
-"noremap Μ M
-"noremap Ν N
-"noremap Ο O
-"noremap Π P
-"noremap Ρ R
-"noremap Σ S
-"noremap Τ T
-"noremap Θ U
-"noremap Ω V
-"noremap Σ W
-"noremap Χ X
-"noremap Υ Y
-"noremap Ζ Z
+noremap Α A
+noremap Β B
+noremap Ψ C
+noremap Δ D
+noremap Ε E
+noremap Φ F
+noremap Γ G
+noremap Η H
+noremap Ι I
+noremap Ξ J
+noremap Κ K
+noremap Λ L
+noremap Μ M
+noremap Ν N
+noremap Ο O
+noremap Π P
+noremap Ρ R
+noremap Σ S
+noremap Τ T
+noremap Θ U
+noremap Ω V
+noremap Σ W
+noremap Χ X
+noremap Υ Y
+noremap Ζ Z
 
 "
 " Use EasyMotion to go anywhere in the screen in normal mode, with just '!'
@@ -602,7 +613,7 @@ let g:syntastic_mode_map = {
 " For C and C++, use libclang, Luke.
 "
 let g:clang_use_library = 1
-let g:clang_library_path = "/usr/lib/llvm-3.5/lib"
+let g:clang_library_path = "/usr/lib/llvm-3.4/lib"
 
 " (for CUDA .cu, too)
 au BufNewFile,BufRead *.c,*.cc,*.cpp,*.h,*.cu call SetupCandCPPenviron()
@@ -625,6 +636,9 @@ function! SetupCandCPPenviron()
     noremap <buffer> <silent> <F8> :TlistToggle<CR>
     noremap! <buffer> <silent> <F8> <ESC>:TlistToggle<CR>
     let g:Tlist_Use_Right_Window = 1
+    let g:Tlist_Exit_OnlyWindow = 1
+    let g:Tlist_Show_One_File = 1
+
 
     "
     " Especially for C and C++, use section 3 of the manpages

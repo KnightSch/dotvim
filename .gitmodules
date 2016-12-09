@@ -75,3 +75,6 @@
 [submodule "bundle/sbt-quickfix"]
 	path = bundle/sbt-quickfix
 	url = https://github.com/dscleaver/sbt-quickfix.git
+[submodule "bundle/DoxygenToolkit"]
+	path = bundle/DoxygenToolkit
+	url = https://github.com/vim-scripts/DoxygenToolkit.vim.git
