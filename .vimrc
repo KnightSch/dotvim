@@ -613,7 +613,7 @@ let g:syntastic_mode_map = {
 " For C and C++, use libclang, Luke.
 "
 let g:clang_use_library = 1
-let g:clang_library_path = "/usr/lib/llvm-3.4/lib"
+let g:clang_library_path = "/usr/lib/llvm-6.0/lib"
 
 " (for CUDA .cu, too)
 au BufNewFile,BufRead *.c,*.cc,*.cpp,*.h,*.cu call SetupCandCPPenviron()
